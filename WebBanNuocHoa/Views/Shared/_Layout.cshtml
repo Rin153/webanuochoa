@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>P E R F U M E</title>
+    <link href="~/Content/images/z4865424476295_f9b591dd8d0550d23e5e693235259935.jpg" rel="icon" type="image/x-icon" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/script.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("P E R F U M E", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Categories", "Index", "Product")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <span>
+                            <a href="/ShoppingCart/ShowCart">
+                                <img src="@Url.Content("~/Content/images/images.png")" style="height: 30px; width: 30px; margin-top: 10px;" />
+                            </a>
+                        </span>
+                        @Html.Action("BagCart", "ShoppingCart")
+                    </li>
+                    <li><a href="@Url.Action("RegisterUser","Account")" style="padding-top: 15px; color:white"> Sign Up</a></li>
+                    <li><a href="@Url.Action("Login","Account")" style="padding-top: 15px; color:white">Login</a></li>
+                    <li><a href="@Url.Action("Logout","Account")" style="padding-top: 15px; color:white">LogOut</a></li>
+                    <li class="format-hello" style="padding-top: 15px; color:white">
+                        @if (Session["NameUser"] == null)
+                        {
+                            <span>Hello</span>
+                        }
+                        else
+                        {
+                            <span> <tex> Hello </tex> @Session["NameUser"]</span>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid body-content">
+        <div class="row">
+            <div class="col-md-2">
+                <ul style="text-decoration: none;background-color: greenyellow;margin-top:20px;list-style-type:none;padding:10px;">
+                    <li><a href="/OrderDetail/GroupByTop5" style="color:white; text-shadow: 1px 1px 2px gray, 0 0 25px red, 0 0 5px red;" id="animation-tops">Top 5 sản phẩm bán chạy nhất</a></li>
+                </ul>
+                <ul style="list-style-type:none">
+                    <li>
+                        <a href="/Product/SearchOption" class="btn btn-default">Search theo giá</a>
+                    </li>
+                </ul>
+                @{Html.RenderAction("CategoryPartial", "Category");}
+            </div>
+            <div class="col-md-10" id="div-content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @*Phần giới thiệu cuối*@
+    <div class="footer" >
+        <div class="footer-inner py-3 py-lg-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="footer-widget">
+                            <h3 class="hastog" style="font-size:20px"><span>Liên hệ</span></h3>
+
+                            <ul class="list-menu list-showroom" style="font-size:14px">
+
+                                <li style="padding-left: 0;">
+                                    <p>
+
+                                        Perfume - Thương hiệu nước hoa chính hãng. Cam kết về chất lượng.
+                                    </p>
+                                </li>
+
+                                <li class="clearfix">
+                                    <i class="block_icon fa fa-map-marker"></i> <p>
+
+                                        1342 CMT8, Phường Bến Thành, Q1, HCM, TP Hồ Chí Minh
+                                    </p>
+                                </li>
+
+                                <li class="clearfix">
+                                    <i class="block_icon fa fa-phone"></i>
+                                    <a href="tel:091234567">SDT: 091234567</a>
+                                    <p>Thứ 2 - Chủ nhật: 8:30 - 22:00</p>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="footer-widget">
+                            <h3 class="hastog" style="font-size:20px"><span>Danh mục</span></h3>
+                            <ul class="list-menu list-blogs" style="font-size:14px">
+
+                                <li><a title="NƯỚC HOA NAM" href="/nuoc-hoa-nam">NƯỚC HOA NAM</a></li>
+
+                                <li><a title="NƯỚC HOA NỮ" href="/nuoc-hoa-nu">NƯỚC HOA NỮ</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="footer-widget">
+                            <h3 class="hastog"><span style="font-size:20px">Hỗ trợ khách hàng</span></h3>
+                            <ul class="list-menu list-blogs" style="font-size:14px">
+
+                                <li><a title="Hướng dẫn mua hàng" href="/huong-dan-mua-hang">Hướng dẫn mua hàng</a></li>
+
+                                <li><a title="Thanh toán &amp; Vận chuyển" href="/thanh-toan">Thanh toán &amp; Vận chuyển</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="footer-widget">
+                            <h3 class="hastog"><span style="font-size:20px">TUYỂN DỤNG</span></h3>
+                            <ul class="list-menu list-blogs" style="font-size:14px">
+
+                                <li><a title="Vị trí Content" href="/">Vị trí Content</a></li>
+
+                                <li><a title="Vị trí Designer" href="/">Vị trí Designer</a></li>
+
+                                <li><a title="Vị trí Sale Manager" href="/">Vị trí Sale Manager</a></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

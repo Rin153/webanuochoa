@@ -1,0 +1,42 @@
+﻿@*@model IEnumerable<WebBanNuocHoa.Models.Product>*@
+@using WebBanNuocHoa.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    #div-ds{
+        text-align:center;
+        background-color:forestgreen;
+        height:50px;
+        border-radius: 20px 20px 0 0;
+    }
+    .MenuPage li{
+        display: inline;
+    }
+</style>
+
+<h2>Danh sách sản phẩm</h2>
+<div class="container">
+    <div class="row">
+        @foreach (var pro in Model)
+        {
+            <div class="col-sm-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="cart-pro">
+                    <p>@Html.DisplayFor(model => pro.ProductID)</p>
+                    <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
+                    <p>@Html.DisplayFor(model => pro.NamePro)</p>
+                    <p>@Html.DisplayFor(model => pro.Price)</p>
+                    <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-default">Buy</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+<div class="MenuPage">
+    @Html.PagedListPager(Model, page => @Url.Action("Index", new { page=page}))
+</div>
+

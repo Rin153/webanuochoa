@@ -1,0 +1,55 @@
+﻿@model WebBanNuocHoa.Models.AdminUser
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="text-align: center; max-width: 500px; width: 100%; background-color: #fff; padding: 25px 30px; border-radius: 10px; box-shadow: 0 5px 10px rgba(0,0,0,0.45); animation: fadein 2s;">
+    <div id="form-register">
+        <div class="col-md-6">
+            <div>
+                <p> Chào mừng bạn! </p>
+                <form action="">
+                    <div class="form-group">
+                        <label for="inputEmail">Email</label>
+                        <div><input type="email" class="form-control" id="inputEmail" required></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Mật khẩu</label>
+                        <div><input type="password" class="form-control" id="inputPassword" required></div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col d-flex justify-content-start">
+                            <div class="checkbox">
+                                <label><input type="checkbox">Nhớ mật khẩu</label>
+                            </div>
+                        </div>
+                        <div class="col d-flex justify-content-end">
+                            <a href="#">Quên mật khẩu ? </a>
+                        </div>
+
+                    </div>
+                    <button type="submit" value="Create" class="form-submit" name="register_submit"><a href="@Url.Action("Index", "Product")"> Đăng Nhập </a></button>
+                    <div class="other-option">
+                        Bạn chưa có tài khoản? Hãy <button><a href="@Url.Action("RegisterUser","Account")" style="color:blue ">Đăng ký</a></button> ngay!
+                    </div>
+                </form>
+
+                <div class="or">
+                    Hoặc đăng nhập với <i class="fas fa-globe"></i>
+                </div>
+
+                <div class="social" style="text-align:center;width: 550px;height: 60px;">
+                    <button class="fb"><i class="fab fa-facebook-f">FACEBOOK</i></button>
+                    <button class="email"><i class="fab fa-google">GOOGLE</i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
